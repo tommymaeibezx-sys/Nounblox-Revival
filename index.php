@@ -1,5 +1,2 @@
-<?php
-header("Location: /login.php");
-exit();
-?>
+<?php header("Location: /Default.aspx"); ?>
 
