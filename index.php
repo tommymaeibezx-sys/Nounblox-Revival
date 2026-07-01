@@ -1,2 +1,3 @@
-<?php header("Location: /Default.aspx"); ?>
-
+<?php
+header("Location: /Default.aspx");
+exit;
