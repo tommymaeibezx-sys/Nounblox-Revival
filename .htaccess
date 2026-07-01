@@ -1,25 +1,17 @@
 Options -Indexes
 
 RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
+
+# Si el archivo o carpeta existe, no tocar
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Soporte para .aspx, .ashx, .html → quitar extensión
+RewriteRule ^(.*)\.(aspx|ashx|html)$ $1 [L]
+
+# Convertir rutas sin extensión a .php
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
 
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([^\.]+)$ $1.php [NC,L]
-RewriteRule ^(.*)\.aspx$ $1 [L]
-
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([^\.]+)$ $1.php [NC,L]
-RewriteRule ^(.*)\.ashx$ $1 [L]
-
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([^\.]+)$ $1.php [NC,L]
-RewriteRule ^(.*)\.html$ $1 [L]
-
-RewriteEngine on
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
+# Fallback a error.php si no existe nada
 RewriteRule .* /error.php [L]
