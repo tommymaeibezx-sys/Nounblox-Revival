@@ -1,8 +1,12 @@
-FROM php:8.2-cli
+FROM php:8.2-apache
 
-WORKDIR /app
-COPY . .
+# Activar mod_rewrite
+RUN a2enmod rewrite
 
-EXPOSE 10000
+# Copiar archivos al servidor
+COPY . /var/www/html/
 
-CMD ["php", "-S", "0.0.0.0:10000"]
+# Permitir .htaccess
+RUN sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf
+
+EXPOSE 80
