@@ -1,17 +1,13 @@
 Options -Indexes
-
 RewriteEngine On
 
-# Si el archivo o carpeta existe, no tocar
+# Si el archivo o carpeta existe físicamente, servirlo normal
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
 
-# Soporte para .aspx, .ashx, .html → quitar extensión
-RewriteRule ^(.*)\.(aspx|ashx|html)$ $1 [L]
+# Quitar extensiones visibles (.aspx, .ashx, .html)
+RewriteRule ^(.*)\.(aspx|ashx|html)$ $1 [L,NC]
 
-# Convertir rutas sin extensión a .php
-RewriteRule ^([^\.]+)$ $1.php [NC,L]
-
-# Fallback a error.php si no existe nada
-RewriteRule .* /error.php [L]
+# 🔥 TODO lo demás va a Games.php
+RewriteRule ^.*$ /Games.php [L]
