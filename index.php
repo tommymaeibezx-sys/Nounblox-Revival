@@ -1,3 +1,4 @@
 <?php
-header("Location: /Default.aspx");
-exit;
+$viene_de_aspx = true;
+include_once('index.php');
+exit();
