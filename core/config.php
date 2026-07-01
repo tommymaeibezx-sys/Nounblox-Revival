@@ -42,7 +42,7 @@ $renderServerUrl = "http://73.237.146.184:33333/";
 $robuxname = "NOUNBUX";
 $tixname = "Tickets";
 
-$site_email = "no-email-yet@nounblx.cf";
+$site_email = "superwingmaster@gmail.com";
 $discord = "7N5BRVZb66";
 $twitter = "NOUNBLOX";
 $reddit = "NOUNBLOX";
